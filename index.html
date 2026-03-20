@@ -1,3 +1,4 @@
+```
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,145 +7,325 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #050018;
-  color: #ffffff;
-  text-align: center;
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:radial-gradient(circle at top,#0a0033,#000000);
+color:white;
+text-align:center;
 }
 
-h1 {
-  color: #ff0033;
-  margin-top: 30px;
+h1{
+color:#ff0033;
+margin-top:30px;
+font-size:42px;
+letter-spacing:2px;
 }
 
-h2 {
-  color: #ff0033;
-  margin-top: 60px;
+.tagline{
+font-size:20px;
+color:#00ff99;
+letter-spacing:3px;
+margin-bottom:20px;
 }
 
-.tagline {
-  font-size: 1.4em;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #00ff99;
-  margin-bottom: 30px;
+section{
+max-width:900px;
+margin:auto;
+padding:20px;
 }
 
-section {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+.programa{
+border-bottom:1px solid #222;
+padding:8px;
 }
 
-iframe {
-  border: none;
-  max-width: 100%;
+h2{
+color:#ff0033;
+margin-top:60px;
 }
 
-.programa {
-  border-bottom: 1px solid #222;
-  padding: 8px 0;
+a{
+color:#00ff99;
+text-decoration:none;
 }
 
-a {
-  color: #00ff99;
-  text-decoration: none;
+a:hover{
+color:#ff0033;
 }
 
-a:hover {
-  color: #ff0033;
+/* PLAYER */
+
+.player{
+display:flex;
+justify-content:center;
+margin-top:20px;
 }
+
+/* EN DIRECTO */
+
+.live{
+margin-top:10px;
+font-weight:bold;
+color:#ff0033;
+font-size:18px;
+animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:.3}
+100%{opacity:1}
+}
+
+/* ECUALIZADOR */
+
+.equalizer{
+display:flex;
+justify-content:center;
+gap:6px;
+margin-top:20px;
+}
+
+.bar{
+width:6px;
+height:20px;
+background:#00ff99;
+animation:beat 1s infinite;
+}
+
+.bar:nth-child(2){animation-delay:.2s}
+.bar:nth-child(3){animation-delay:.4s}
+.bar:nth-child(4){animation-delay:.3s}
+.bar:nth-child(5){animation-delay:.5s}
+
+@keyframes beat{
+0%{height:10px}
+50%{height:35px}
+100%{height:10px}
+}
+
+/* INFO RADIO */
+
+.info{
+margin-top:20px;
+font-size:18px;
+color:#00ff99;
+}
+
+.listeners{
+margin-top:10px;
+font-size:16px;
+color:#ccc;
+}
+
+/* BOTON MOVIL */
+
+.listen{
+margin-top:20px;
+}
+
+.listen a{
+background:#ff0033;
+color:white;
+padding:10px 20px;
+border-radius:5px;
+font-weight:bold;
+display:inline-block;
+}
+
+.listen a:hover{
+background:#cc0029;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- PORTADA + DIRECTO -->
 <section>
-  <h1>Sonido de Valencia Radio</h1>
-  <div class="tagline">La emisora del remember</div>
 
-  <iframe
-    src="https://zeno.fm/player/sonido-de-valencia-radio"
-    width="575"
-    height="250"
-    scrolling="no">
-  </iframe>
+<h1>Sonido de Valencia Radio</h1>
+<div class="tagline">LA EMISORA DEL REMEMBER</div>
 
-  <p style="font-size:0.9em; margin-top:10px;">
-    <a href="https://zeno.fm/" target="_blank">A Zeno.FM Station</a>
-  </p>
+<div class="live">🔴 EN DIRECTO</div>
+
+<div class="player">
+
+<script src="https://hosted.muses.org/mrp.js"></script>
+<script>
+MRP.insert({
+'url':'https://subweb.sytes.net:8443/almodovar',
+'volume':100,
+'autoplay':false,
+'forceHTML5':true,
+'title':'Sonido de Valencia Radio',
+'welcome':'DALE AL PLAY',
+'skin':'dragonblues',
+'width':400,
+'height':145
+});
+</script>
+
+</div>
+
+<div class="equalizer">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
+
+<div class="info">
+📻 Programa en directo: <span id="programa">Cargando...</span>
+</div>
+
+<div class="listeners">
+👥 Oyentes: <span id="listeners">--</span>
+</div>
+
+<div class="listeners">
+🌐 Visitas web: <span id="visitas">0</span>
+</div>
+
+<div class="listen">
+<a href="https://subweb.sytes.net:8443/almodovar" target="_blank">
+📱 Escuchar en móvil
+</a>
+</div>
+
 </section>
+
 
 <section>
-  <h2>📅 Programación</h2>
 
-  <h3>Lunes</h3>
-  <div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
-  <div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
-  <div class="programa">🔀 Mezclas Imposibles — 17:00–19:00</div>
+<h2>📅 Programación</h2>
 
-  <h3>Martes</h3>
-  <div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
-  <div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
-  <div class="programa">🔀 Mezclas Imposibles — 17:00–19:00</div>
-  <div class="programa">🌙 Esperando las Estrellas — 21:00–23:00</div>
+<h3>Lunes</h3>
+<div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
+<div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
+<div class="programa">🔀 Mezclas Imposibles — 17:00–19:00</div>
 
-  <h3>Miércoles</h3>
-  <div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
-  <div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
-  <div class="programa">🔀 Mezclas Imposibles — 17:00–18:00</div>
-  <div class="programa">🕒 La Nave del Tiempo — 18:00–20:00</div>
+<h3>Martes</h3>
+<div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
+<div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
+<div class="programa">🔀 Mezclas Imposibles — 17:00–19:00</div>
+<div class="programa">🌙 Esperando las Estrellas — 21:00–23:00</div>
 
-  <h3>Jueves</h3>
-  <div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
-  <div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
-  <div class="programa">🔀 Mezclas Imposibles — 17:00–19:00</div>
+<h3>Miércoles</h3>
+<div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
+<div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
+<div class="programa">🔀 Mezclas Imposibles — 17:00–18:00</div>
+<div class="programa">🕒 La Nave del Tiempo — 18:00–20:00</div>
 
-  <h3>Viernes</h3>
-  <div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
-  <div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
-  <div class="programa">📡 Plataforma Dance — 17:00-18:00</div>
+<h3>Jueves</h3>
+<div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
+<div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
+<div class="programa">🔀 Mezclas Imposibles — 17:00–19:00</div>
 
-  <h3>Sábado</h3>
-  <div class="programa">💃 Wantuki — 08:00–10:00</div>
-  <div class="programa">🤘 Planeta Rock — 10:00–11:00</div>
-  <div class="programa">💿 Museo Dance — 11:00–13:00</div>
-  <div class="programa">🌀 Multiverso Electronico — 15:00–16:00</div>
-  <div class="programa">🌍 Panorama Cultureta — 16:00–17:00</div>
-  <div class="programa">📼 Retro Forever — 17:00–19:00</div>
-  <div class="programa">💯 Todo a 100 — 20:00–22:00</div>
+<h3>Viernes</h3>
+<div class="programa">☀️ Buenos Días Mundo — 10:00–12:00</div>
+<div class="programa">🎸 Buscando Rock — 13:00–14:00</div>
+<div class="programa">📡 Plataforma Dance — 17:00-18:00</div>
+<div class="programa">📡 Los vampiros salen de marcha — 19:00-21:00</div>
 
-  <h3>Domingo</h3>
-  <div class="programa">💃 Wantuki — 08:00–10:00</div>
-  <div class="programa">🤘 Planeta Rock — 10:00–11:00</div>
-  <div class="programa">💿 Museo Dance — 11:00–13:00</div>
-  <div class="programa">🌀 Multiverso Electronico — 15:00–16:00</div>
-  <div class="programa">🌍 Panorama Cultureta — 16:00–17:00</div>
-  <div class="programa">📼 Retro Forever — 17:00–19:00</div>
+<h3>Sábado</h3>
+<div class="programa">💃 Wantuki — 08:00–10:00</div>
+<div class="programa">🤘 Planeta Rock — 10:00–11:00</div>
+<div class="programa">💿 Museo Dance — 11:00–13:00</div>
+<div class="programa">🌀 Multiverso Electronico — 15:00–16:00</div>
+<div class="programa">🌍 Panorama Cultureta — 16:00–17:00</div>
+<div class="programa">📼 Retro Forever — 17:00–19:00</div>
+<div class="programa">💯 Todo a 100 — 20:00–22:00</div>
+
+<h3>Domingo</h3>
+<div class="programa">💃 Wantuki — 08:00–10:00</div>
+<div class="programa">🤘 Planeta Rock — 10:00–11:00</div>
+<div class="programa">💿 Museo Dance — 11:00–13:00</div>
+<div class="programa">🌀 Multiverso Electronico — 15:00–16:00</div>
+<div class="programa">🌍 Panorama Cultureta — 16:00–17:00</div>
+<div class="programa">📼 Retro Forever — 17:00–19:00</div>
+
 </section>
 
-</section>
 
-<!-- CONTACTO -->
 <section>
-  <h2>📩 Contacto</h2>
 
-  <p>📧 <a href="mailto:sonidodevalenciaradio@gmail.com">
-    sonidodevalenciaradio@gmail.com
-  </a></p>
+<h2>📩 Contacto</h2>
 
-  <p>📘 <a href="https://facebook.com/sonidodevalenciaradio" target="_blank">
-    Facebook
-  </a></p>
+<p>📧 <a href="mailto:sonidodevalenciaradio@gmail.com">
+sonidodevalenciaradio@gmail.com
+</a></p>
 
-  <p>📸 <a href="https://www.instagram.com/sonido_de_valencia._radio/" target="_blank">
-    Instagram
-  </a></p>
+<p>📘 <a href="https://facebook.com/sonidodevalenciaradio" target="_blank">
+Facebook
+</a></p>
+
+<p>📸 <a href="https://www.instagram.com/sonido_de_valencia._radio/" target="_blank">
+Instagram
+</a></p>
+
 </section>
+
+
+<script>
+
+/* SERVIDOR ICECAST */
+
+const statusURL =
+"https://api.allorigins.win/raw?url=https://subweb.sytes.net:8443/status-json.xsl";
+
+/* ACTUALIZAR INFO RADIO */
+
+async function updateRadio(){
+
+try{
+
+let response = await fetch(statusURL);
+let data = await response.json();
+
+let source = data.icestats.source;
+
+if(Array.isArray(source)){
+source = source[0];
+}
+
+document.getElementById("programa").textContent =
+source.title || "Emisión en directo";
+
+document.getElementById("listeners").textContent =
+source.listeners || "0";
+
+}catch{
+
+document.getElementById("programa").textContent =
+"Emisión en directo";
+
+document.getElementById("listeners").textContent =
+"--";
+
+}
+
+}
+
+setInterval(updateRadio,10000);
+updateRadio();
+
+/* CONTADOR VISITAS WEB */
+
+if(localStorage.page_view){
+localStorage.page_view = Number(localStorage.page_view)+1;
+}else{
+localStorage.page_view = 1;
+}
+
+document.getElementById("visitas").textContent =
+localStorage.page_view;
+
+</script>
 
 </body>
 </html>
-
+```
